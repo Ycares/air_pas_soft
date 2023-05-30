@@ -28,7 +28,7 @@ User.destroy_all
 # git add .
 # git commit -m "add dotenv-rails"
 
-10.times do
+5.times do
   User.create(
     username: Faker::Artist.name, #=> "Michelangelo"
     email: Faker::Internet.safe_email,
@@ -39,15 +39,6 @@ User.destroy_all
     status: %w(Newbie Intermediate Confirmed Professional).sample,
   )
 end
-
-Weapon.create(
-  name: "Wonder Woman 1984",
-  details: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s",
-  rating: rand(0..5)
-  origin: %w(Chinese Italian Japanese French Belgian American Georgian Spanish Russian Ukrainian Nigerian Syrian).sample
-  era: %w(Chinese Italian Japanese French Belgian American Georgian Spanish Russian Ukrainian Nigerian Syrian).sample
-)
-
 
 weapons = [
   {
