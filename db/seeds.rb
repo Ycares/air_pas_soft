@@ -18,6 +18,15 @@ puts "Cleaning database..."
 Weapon.destroy_all
 User.destroy_all
 
+# Folder .env for api key cloudinary :
+# gem "dotenv-rails", groups: [:development, :test]
+# then :
+bundle install
+touch .env
+echo '.env*' >> .gitignore
+git status # .env should not be there, we don't want to push it to GitHub
+git add .
+git commit -m "add dotenv-rails"
 
 20.times do
   User.create(
