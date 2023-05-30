@@ -35,31 +35,31 @@ puts "Creating users..."
 ycare = User.create!(
   username: "Ycare",
   email: "ycare@apple.com",
-  latitude: "47.218732",
-  longitude: "-1.489932",
+  # latitude: "47.218732",
+  # longitude: "-1.489932",
   password: "azerty",
   age: 23,
-  status: "Newbie"
+  experience: "Newbie"
 )
 
 clara = User.create!(
   username: "Clara44",
   email: "clara@survive.com",
-  latitude: "47.223895",
-  longitude: "-1.581758",
+  # latitude: "47.223895",
+  # longitude: "-1.581758",
   password: "123456",
   age: 18,
-  status: "Confirmed"
+  experience: "Confirmed"
 )
 
 vince = User.create!(
   username: "Vincenzo",
   email: "weaponlover@wanadoo.fr",
-  latitude: "47.230995",
-  longitude: "-1.597152",
+  # latitude: "47.230995",
+  # longitude: "-1.597152",
   password: "123456",
   age: 58,
-  status: "Intermediate"
+  experience: "Intermediate"
 )
 
 puts "Creating weapons..."
