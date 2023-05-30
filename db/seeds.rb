@@ -13,11 +13,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-require 'faker'
-puts "Cleaning database..."
-Weapon.destroy_all
-User.destroy_all
-
 # Folder .env for api key cloudinary :
 # gem "dotenv-rails", groups: [:development, :test]
 # then :
@@ -28,18 +23,46 @@ User.destroy_all
 # git add .
 # git commit -m "add dotenv-rails"
 
-5.times do
-  User.create(
-    username: Faker::Artist.name, #=> "Michelangelo"
-    email: Faker::Internet.safe_email,
-    latitude: Faker::Address.latitude, #=> "-58.17256227443719",
-    longitude: Faker::Address.longitude,
-    password: Faker::Internet.password(min_length: 8),
-    age: rand(18..75),
-    status: %w(Newbie Intermediate Confirmed Professional).sample,
-  )
-end
+require 'faker'
+puts "Cleaning database..."
+Order.destroy_all
+Weapon.destroy_all
+User.destroy_all
 
+
+puts "Creating users..."
+#  status: %w(Newbie Intermediate Confirmed Professional).sample,
+ycare = User.create!(
+  username: "Ycare",
+  email: "ycare@apple.com",
+  latitude: "47.218732",
+  longitude: "-1.489932",
+  password: "azerty",
+  age: 23,
+  status: "Newbie"
+)
+
+clara = User.create!(
+  username: "Clara44",
+  email: "clara@survive.com",
+  latitude: "47.223895",
+  longitude: "-1.581758",
+  password: "123456",
+  age: 18,
+  status: "Confirmed"
+)
+
+vince = User.create!(
+  username: "Vincenzo",
+  email: "weaponlover@wanadoo.fr",
+  latitude: "47.230995",
+  longitude: "-1.597152",
+  password: "123456",
+  age: 58,
+  status: "Intermediate"
+)
+
+puts "Creating weapons..."
 weapons = [
   {
     name: "Katana",
@@ -50,7 +73,8 @@ weapons = [
     category: "Attack",
     weapon_type: "Sword & Saber",
     price: rand(10...1000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: clara
   },
   {
     name: "Shuriken",
@@ -61,7 +85,8 @@ weapons = [
     category: "Attack",
     weapon_type: "Throwing weapon",
     price: rand(10...1000),
-    efficiency_rate: 6
+    efficiency_rate: 6,
+    owner: clara
   },
   {
     name: "Kusarigama",
@@ -72,7 +97,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...1000),
-    efficiency_rate: 7
+    efficiency_rate: 7,
+    owner: ycare
   },
   {
     name: "Arbalète",
@@ -105,7 +131,8 @@ weapons = [
     category: "Attack",
     weapon_type: "Polearm",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: ycare
   },
   {
     name: "Claymore",
@@ -116,7 +143,8 @@ weapons = [
     category: "Attack",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 7
+    efficiency_rate: 7,
+    owner: ycare
   },
   {
     name: "Khukuri",
@@ -127,7 +155,8 @@ weapons = [
     category: "Attack",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 7
+    efficiency_rate: 7,
+    owner: clara
   },
   {
     name: "Australian Boomerang",
@@ -137,7 +166,8 @@ weapons = [
     characteristics: "Returning projectile, used for hunting and warfare",
     category: "Attack",
     weapon_type: "Throwing weapon",
-    efficiency_rate: 6
+    efficiency_rate: 6,
+    owner: ycare
   },
   {
     name: "European Buckler",
@@ -148,7 +178,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: vincent
   },
   {
     name: "Dagger",
@@ -159,7 +190,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: vincent
   },
   {
     name: "Chinese Nunchaku",
@@ -170,7 +202,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 7
+    efficiency_rate: 7,
+    owner: vincent
   },
   {
     name: "Rapier",
@@ -181,7 +214,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: clara
   },
   {
     name: "Sai",
@@ -192,7 +226,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: clara
   },
   {
     name: "Shield",
@@ -203,7 +238,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 10
+    efficiency_rate: 10,
+    owner: clara
   },
   {
     name: "Scotish Targe",
@@ -214,7 +250,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: clara
   },
 
   {
@@ -226,7 +263,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Polearm",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: clara
   },
 
   {
@@ -238,7 +276,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: clara
   },
   {
     name: "Gauntlet",
@@ -249,7 +288,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: clara
   },
   {
     name: "Medieval Glaive",
@@ -260,7 +300,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Polearm",
     price: rand(10...5000),
-    efficiency_rate: 9
+    efficiency_rate: 9,
+    owner: clara
   },
   {
     name: "Japanese Tessen",
@@ -271,7 +312,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 7
+    efficiency_rate: 7,
+    owner: clara
   },
   {
     name: "Bouclier",
@@ -282,7 +324,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 10
+    efficiency_rate: 10,
+    owner: vincent
   },
   {
     name: "Parrying Dagger",
@@ -293,7 +336,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: vincent
   },
   {
     name: "Katar",
@@ -304,7 +348,8 @@ weapons = [
     category: "Defense",
     weapon_type: "Sword & Saber",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: vincent
   },
   {
     name: "Studded Leather Armor",
@@ -315,17 +360,24 @@ weapons = [
     category: "Defense",
     weapon_type: "Line weapon",
     price: rand(10...5000),
-    efficiency_rate: 8
+    efficiency_rate: 8,
+    owner: vincent
   }
 ]
-
-# Add more weapons here...
 
 # Create Weapon records
 weapons.each do |weapon|
   Weapon.create(weapon)
 end
 
-
+# puts "Creating orders..."
+Order.create!(
+  user:      ycare,
+  weapon:  weapons.last,
+  start_date:   "2023-06-01",
+  end_date:     "2023-06-10",
+  total_price: 1110,
+  status: true
+)
 
 puts "Finished!"

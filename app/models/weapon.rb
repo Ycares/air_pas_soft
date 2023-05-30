@@ -8,4 +8,7 @@ class Weapon < ApplicationRecord
   validates :category, presence: true
   validates :weapon_type, presence: true
   validates :price, presence: true
+
+  has_one_attached :photo
+
 end
