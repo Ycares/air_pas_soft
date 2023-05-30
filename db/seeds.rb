@@ -21,43 +21,33 @@ User.destroy_all
 # Folder .env for api key cloudinary :
 # gem "dotenv-rails", groups: [:development, :test]
 # then :
-bundle install
-touch .env
-echo '.env*' >> .gitignore
-git status # .env should not be there, we don't want to push it to GitHub
-git add .
-git commit -m "add dotenv-rails"
+# bundle install
+# touch .env
+# echo '.env*' >> .gitignore
+# git status # .env should not be there, we don't want to push it to GitHub
+# git add .
+# git commit -m "add dotenv-rails"
 
-20.times do
+10.times do
   User.create(
-    name: Faker::Artist.name, #=> "Michelangelo"
+    username: Faker::Artist.name, #=> "Michelangelo"
     email: Faker::Internet.safe_email,
     latitude: Faker::Address.latitude, #=> "-58.17256227443719",
     longitude: Faker::Address.longitude,
     password: Faker::Internet.password(min_length: 8),
-    phone_number: Faker::PhoneNumber.phone_number_with_country_code,
     age: rand(18..75),
     status: %w(Newbie Intermediate Confirmed Professional).sample,
-    nationality: %w(Chinese Italian Japanese French Belgian American Georgian Spanish Russian Ukrainian Nigerian Syrian ).sample
   )
 end
 
 Weapon.create(
   name: "Wonder Woman 1984",
   details: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s",
-  price: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
   rating: rand(0..5)
   origin: %w(Chinese Italian Japanese French Belgian American Georgian Spanish Russian Ukrainian Nigerian Syrian).sample
   era: %w(Chinese Italian Japanese French Belgian American Georgian Spanish Russian Ukrainian Nigerian Syrian).sample
-  price: rand(10...1000),
-  type: "sword-saber"
-
 )
-type: "polearm"
-type: "throwing weapon"
-type: "whip"
-type: "line_weapon"
-type: "polearm"
+
 
 weapons = [
   {
@@ -66,15 +56,21 @@ weapons = [
     origin_country: "Japan",
     era_of_use: "Feudal Japan",
     characteristics: "Sharp, flexible, excellent cutting ability",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Sword & Saber",
+    price: rand(10...1000),
+    efficiency_rate: 8
   },
   {
     name: "Shuriken",
-    details: "A small, hand-held weapon with sharpened edges, used for throwing.",
+    details: "A small, hand-held weapon with sharpened edges, used for Throwing.",
     origin_country: "Japan",
     era_of_use: "Feudal Japan",
     characteristics: "Lightweight, concealable, used for ranged attacks",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Throwing weapon",
+    price: rand(10...1000),
+    efficiency_rate: 6
   },
   {
     name: "Kusarigama",
@@ -82,7 +78,10 @@ weapons = [
     origin_country: "Japan",
     era_of_use: "Feudal Japan",
     characteristics: "Versatile, combines cutting and trapping techniques",
-    category: "Defense"
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...1000),
+    efficiency_rate: 7
   },
   {
     name: "Arbalète",
@@ -90,23 +89,32 @@ weapons = [
     origin_country: "Europe",
     era_of_use: "Medieval period",
     characteristics: "Long range, high accuracy, used by both military and hunters",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Throwing weapon",
+    price: rand(10...1000),
+    efficiency_rate: 8
   },
   {
-    name: "Gladius",
+    name: "Roman Gladius",
     details: "A short sword used by ancient Roman soldiers.",
     origin_country: "Ancient Rome",
     era_of_use: "Roman Empire",
     characteristics: "Short and double-edged, used for stabbing and slashing",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 7
   },
   {
     name: "Spear",
-    details: "A pole weapon with a sharp pointed end, used for thrusting or throwing.",
+    details: "A pole weapon with a sharp pointed end, used for thrusting or Throwing.",
     origin_country: "Various civilizations",
     era_of_use: "Ancient times",
     characteristics: "Versatile, long reach, used by both infantry and cavalry",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Polearm",
+    price: rand(10...5000),
+    efficiency_rate: 9
   },
   {
     name: "Claymore",
@@ -114,7 +122,10 @@ weapons = [
     origin_country: "Scotland",
     era_of_use: "Medieval period",
     characteristics: "Heavy, powerful cutting strikes",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 7
   },
   {
     name: "Khukuri",
@@ -122,63 +133,64 @@ weapons = [
     origin_country: "Nepal",
     era_of_use: "Various periods",
     characteristics: "Forward-curving blade, versatile for chopping and slashing",
-    category: "Attack"
+    category: "Attack",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 7
   },
   {
-    name: "Boomerang",
+    name: "Australian Boomerang",
     details: "A thrown tool typically made of wood, designed to return to the thrower.",
     origin_country: "Australia",
-    era_of_use: "Indigenous cultures",
-    characteristics: "Used for hunting and warfare, returning flight path",
-    category: "Attack"
+    era_of_use: "Ancient and modern periods",
+    characteristics: "Returning projectile, used for hunting and warfare",
+    category: "Attack",
+    weapon_type: "Throwing weapon",
+    efficiency_rate: 6
   },
   {
-    name: "Halberd",
-    details: "A two-handed pole weapon combining an axe blade and a spike.",
+    name: "European Buckler",
+    details: "A small round shield held by a handle or strapped to the forearm.",
     origin_country: "Europe",
     era_of_use: "Medieval and Renaissance periods",
-    characteristics: "Versatile, used by infantry for slashing, thrusting, and hooking",
-    category: "Attack"
+    characteristics: "Lightweight, used for blocking and parrying",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 9
   },
   {
-    name: "Dao",
-    details: "A Chinese single-edged sword with a curved blade.",
+    name: "Dagger",
+    details: "A short-bladed weapon used for stabbing or thrusting.",
+    origin_country: "Various civilizations",
+    era_of_use: "Various periods",
+    characteristics: "Concealable, used for close combat and as a backup weapon",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8
+  },
+  {
+    name: "Chinese Nunchaku",
+    details: "Two short sticks connected by a chain or rope.",
     origin_country: "China",
     era_of_use: "Various periods",
-    characteristics: "Sharp and versatile, used for slashing and chopping",
-    category: "Attack"
+    characteristics: "Versatile, used for striking and trapping",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 7
   },
   {
-    name: "Macuahuitl",
-    details: "A wooden club-like weapon with embedded obsidian blades.",
-    origin_country: "Mesoamerica",
-    era_of_use: "Aztec civilization",
-    characteristics: "Sharp cutting blades, used for slashing and chopping",
-    category: "Attack"
-  },
-  {
-    name: "Pata",
-    details: "A sword from the Indian subcontinent with a gauntlet integrated into the hilt.",
-    origin_country: "India",
-    era_of_use: "Medieval period",
-    characteristics: "Unique hilt design, used for thrusting and slashing",
-    category: "Attack"
-  },
-  {
-    name: "Katar",
-    details: "A push dagger characterized by its H-shaped handle.",
-    origin_country: "India",
-    era_of_use: "Ancient and medieval periods",
-    characteristics: "Thrusting weapon, used in close combat",
-    category: "Attack"
-  },
-  {
-    name: "Pilum",
-    details: "A Roman javelin used by the Roman legions.",
-    origin_country: "Ancient Rome",
-    era_of_use: "Roman Empire",
-    characteristics: "Thrown weapon, designed to stick into shields or bodies",
-    category: "Attack"
+    name: "Rapier",
+    details: "A slender, sharply pointed sword used primarily for thrusting attacks.",
+    origin_country: "Europe",
+    era_of_use: "16th to 18th centuries",
+    characteristics: "Fast and precise thrusting techniques",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8
   },
   {
     name: "Sai",
@@ -186,93 +198,143 @@ weapons = [
     origin_country: "Okinawa, Japan",
     era_of_use: "Feudal Japan",
     characteristics: "Defensive weapon, used for trapping and striking",
-    category: "Defense"
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 9
   },
   {
-    name: "Zhanmadao",
-    details: "A Chinese pole weapon with a wide, curved blade.",
-    origin_country: "China",
-    era_of_use: "Medieval and early modern periods",
-    characteristics: "Large cutting weapon, used by cavalry",
-    category: "Attack"
+    name: "Shield",
+    details: "A piece of personal armor held in the hand or worn on the forearm.",
+    origin_country: "Various civilizations",
+    era_of_use: "Ancient and medieval periods",
+    characteristics: "Various shapes and sizes, used for blocking attacks",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 10
   },
   {
-    name: "Tomahawk",
-    details: "A single-handed axe-like weapon used by Native American tribes.",
-    origin_country: "North America",
-    era_of_use: "Indigenous cultures",
-    characteristics: "Versatile, used for chopping, throwing, and close combat",
-    category: "Attack"
+    name: "Scotish Targe",
+    details: "A round shield used by Scottish Highland warriors.",
+    origin_country: "Scotland",
+    era_of_use: "Medieval period",
+    characteristics: "Lightweight, used for blocking and parrying",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 9
+  },
+
+  {
+    name: "Halberd",
+    details: "A two-handed pole weapon combining an axe blade and a spike.",
+    origin_country: "Europe",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Versatile, used by infantry for slashing, thrusting, and hooking",
+    category: "Defense",
+    weapon_type: "Polearm",
+    price: rand(10...5000),
+    efficiency_rate: 9
+  },
+
+  {
+    name: "Parrying Dagger",
+    details: "A specialized dagger used in conjunction with a sword for blocking and parrying.",
+    origin_country: "Europe",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Designed for deflecting and trapping opponent's weapon",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8
   },
   {
-    name: "War Fan",
-    details: "A fan-shaped weapon typically made of metal.",
+    name: "Gauntlet",
+    details: "A glove with a metal-plated backhand used for hand-to-hand combat and defense.",
+    origin_country: "Various civilizations",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Protective armor, used for blocking and striking",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 8
+  },
+  {
+    name: "Medieval Glaive",
+    details: "A Polearm with a large, single-edged blade on the end.",
+    origin_country: "Europe",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Long reach, used for cutting and thrusting",
+    category: "Defense",
+    weapon_type: "Polearm",
+    price: rand(10...5000),
+    efficiency_rate: 9
+  },
+  {
+    name: "Japanese Tessen",
+    details: "A fan made of iron plates used by samurai as a concealed weapon.",
     origin_country: "Japan",
     era_of_use: "Feudal Japan",
-    characteristics: "Concealable, used for striking and parrying",
-    category: "Defense"
+    characteristics: "Concealable, used for striking and as a defensive shield",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 7
   },
   {
-    name: "Bō",
-    details: "A long staff weapon used in various martial arts.",
-    origin_country: "Japan",
-    era_of_use: "Feudal Japan",
-    characteristics: "Versatile, used for striking and blocking",
-    category: "Defense"
+    name: "Bouclier",
+    details: "A large shield used by medieval European knights.",
+    origin_country: "Europe",
+    era_of_use: "Medieval period",
+    characteristics: "Heavy, used for blocking and protecting",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 10
   },
   {
-    name: "Scimitar",
-    details: "A curved, single-edged sword with a long cutting edge.",
-    origin_country: "Middle East",
-    era_of_use: "Various periods",
-    characteristics: "Curved blade, used for slashing and cutting",
-    category: "Attack"
+    name: "Parrying Dagger",
+    details: "A specialized dagger used in conjunction with a sword for blocking and parrying.",
+    origin_country: "Europe",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Designed for deflecting and trapping opponent's weapon",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8
   },
   {
-    name: "Kampilan",
-    details: "A Filipino sword characterized by its long, wide, and asymmetrical blade.",
-    origin_country: "Philippines",
-    era_of_use: "Pre-colonial period",
-    characteristics: "Large cutting weapon, used by warriors and datu (chiefs)",
-    category: "Attack"
-  },
-  {
-    name: "Talwar",
-    details: "A curved sword commonly used in the Indian subcontinent.",
+    name: "Katar",
+    details: "A push dagger characterized by its H-shaped handle.",
     origin_country: "India",
     era_of_use: "Medieval and early modern periods",
-    characteristics: "Curved blade, used for slashing and thrusting",
-    category: "Attack"
+    characteristics: "Thrusting weapon, used for close combat",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8
   },
   {
-    name: "Falcata",
-    details: "A curved sword used by ancient Iberians and Celtiberians.",
-    origin_country: "Iberian Peninsula",
-    era_of_use: "Ancient times",
-    characteristics: "Curved blade, used for slashing and chopping",
-    category: "Attack"
-  },
-  {
-    name: "Kpinga",
-    details: "A throwing knife with a curved blade and a handle at the center.",
-    origin_country: "Central Africa",
-    era_of_use: "Various periods",
-    characteristics: "Thrown weapon, used for long-range attacks",
-    category: "Attack"
-  },
-  {
-    name: "Zweihander",
-    details: "A large two-handed sword used in the late medieval and Renaissance periods.",
-    origin_country: "Germany",
-    era_of_use: "Medieval and Renaissance periods",
-    characteristics: "Massive size, used for powerful cutting strikes",
-    category: "Attack"
+    name: "Studded Leather Armor",
+    details: "A type of armor made of leather with metal studs or spikes attached.",
+    origin_country: "Various civilizations",
+    era_of_use: "Medieval period",
+    characteristics: "Lightweight, provides moderate protection",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 8
   }
-  # Add more weapons here...
 ]
+
+# Add more weapons here...
 
 # Create Weapon records
 weapons.each do |weapon|
   Weapon.create(weapon)
 end
+
+
+
 puts "Finished!"
