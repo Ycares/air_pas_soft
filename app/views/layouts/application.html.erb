@@ -8,6 +8,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400;1,600&family=Rubik+Dirt&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -16,8 +20,8 @@
 
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
-        <%= link_to "#", class: "navbar-brand" do %>
-          <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+        <%= link_to "/", class: "navbar-brand" do %>
+          <%= image_tag "logo.png" %>
         <% end %>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +32,7 @@
           <ul class="navbar-nav me-auto">
             <%# if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Add a weapon", "#", class: "nav-link" %>
+                <%= link_to "Add a weapon", "/", class: "nav-link nav-text" %>
               </li>
               <li class="nav-item dropdown">
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -48,5 +52,12 @@
     </div>
 
     <%= yield %>
+
+    <div class="footer">
+      <div class="footer-copyright">
+        <h2 class="text-center fs-5 h2-footer">Air pas Soft</h2>
+      </div>
+    </div>
+
   </body>
 </html>
