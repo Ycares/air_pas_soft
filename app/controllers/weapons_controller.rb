@@ -3,6 +3,8 @@ class WeaponsController < ApplicationController
   end
 
   def show
+    @order = Order.new
+    @weapon = Weapon.find(params[:id])
   end
 
   def edit
