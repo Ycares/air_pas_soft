@@ -15,9 +15,6 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
         <%= link_to "/", class: "navbar-brand" do %>
@@ -53,8 +50,11 @@
 
     <%= yield %>
 
-    <div class="footer">
-      <div class="footer-copyright">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class="footer position-relative">
+      <div class="footer-copyright position-relative position-absolute top-50 start-50 translate-middle">
         <h2 class="text-center fs-5 h2-footer">Air pas Soft</h2>
       </div>
     </div>
