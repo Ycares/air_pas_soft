@@ -1,7 +1,7 @@
 <div class="banner banner-homepage">
   <div class="container">
     <h1 class="text-center h1-homepage">Air pas Soft</h1>
-    <p class="text-center text-banner-homepage">Because it's difficult to survive without a weapon.</p>
+    <p class="text-center text-banner-homepage"> <strong> Because it's now difficult to survive without a trustfull weapon </strong> </p>
     <div class="mx-auto" style="width: 170px;">
     <%= link_to "Book a weapon", "/weapons", class: "btn btn-flat btn-homepage" %>
     </div>
@@ -10,27 +10,36 @@
 
 <div class="container py-5">
   <div class="row">
-    <h2 class="pb-4 text-center">Types of weapons</h2>
+    <h2 class="pb-4 text-center"> Have a look at our categories  </h2>
       <div class="cards cards-homepage">
-        <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/15/4a/83/154a83ed48ed5271a9f957ac5a1bdc48.jpg)">
-          Hunting
-        </div>
+        <%= link_to weapons_path  do %>
+          <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/15/4a/83/154a83ed48ed5271a9f957ac5a1bdc48.jpg)">
+            Hunting
+          </div>
+        <% end %>
+        <%= link_to weapons_path  do %>
+          <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/44/a6/5a/44a65a983dac0c1e29283aee1eb33745.jpg)">
+            Attack
+          </div>
+        <% end %>
 
-        <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/44/a6/5a/44a65a983dac0c1e29283aee1eb33745.jpg)">
-          Attack
-        </div>
+        <%= link_to weapons_path  do %>
+          <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://geekprepper.com/wp-content/uploads/2013/02/Best-Weapons-To-Have-In-A-Zombie-Apocalypse-1.png)">
+            Defense
+          </div>
+        <% end %>
 
-        <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://geekprepper.com/wp-content/uploads/2013/02/Best-Weapons-To-Have-In-A-Zombie-Apocalypse-1.png)">
-          Defense
-        </div>
+        <%= link_to weapons_path  do %>
+          <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.renderhub.com/dereza/medieval-pillory-torture/medieval-pillory-torture.jpg)">
+            Torture
+          </div>
+        <% end %>
 
-        <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.renderhub.com/dereza/medieval-pillory-torture/medieval-pillory-torture.jpg)">
-          Torture
-        </div>
-
-        <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdnb.artstation.com/p/assets/images/images/006/810/963/large/max-uho-ushakov-cagehuman1.jpg?1501442691)">
-          Trap
-        </div>
+        <%= link_to weapons_path  do %>
+          <div class="card-category card-category-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdnb.artstation.com/p/assets/images/images/006/810/963/large/max-uho-ushakov-cagehuman1.jpg?1501442691)">
+            Trap
+          </div>
+        <% end %>
       </div>
     </div>
 </div>
