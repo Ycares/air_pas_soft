@@ -1,32 +1,38 @@
 <div class="container ">
-  <div class="weapons-info-box">
-    <div class="weapon-info">
+
+    <div class="weapon-info ">
       <h1> <%= @weapon.name %> </h1>
-      <p> Efficacité : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
+      <p class="pb-4" > Efficacité : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
       <div class= >
       <%= cl_image_tag @weapon.photo.key, width:200, height:200, crop: :fill %>
       </div>
     </div>
+    <div class="card-owner-weapon">
+      <div class="row pt-5" >
+        <div class="col ">
+          <h2 class="pb-4"> <%= @weapon.owner.username %> </h2>
+          <h2 class="card-header"> Weapon details </h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" > <%= @weapon.details %></li>
+            <li class="list-group-item"><%= @weapon.characteristics %></li>
+            <li class="list-group-item"><%= @weapon.category%></li>
+            <li class="list-group-item"><%= @weapon.weapon_type%></li>
+          </ul>
 
-    <div class="row pt-5" >
-      <div class="col">
-        <p> <%= @weapon.owner.username %> </p>
-        <p> <%= @weapon.details %></p>
-      </div>
+        </div>
+        <div class="col-1">
+          <p class="img-owner-weapon"><%= cl_image_tag @weapon.owner.photo.key, width: 50, height:45 %></p>
+        </div>
 
-      <div class="card col-4">
-        <%= simple_form_for(@order) do |f| %>
-        <p><%= @weapon.price %>€ per day </p>
-        <div class=""> <%= f.input :start_date, as: :date, order: [:day,:month, :year] %> </div>
-        <div class=""><%= f.input :end_date, as: :date, order: [:day, :month, :year]%> </div>
-        <div class=""><%= f.input :comment %> </div>
-        <%= f.submit %>
-        <% end %>
-      </div>
-
-      <div>
-
+        <div class="card col-4 m-2 p-3">
+          <%= simple_form_for(@order) do |f| %>
+          <p> <strong class="fs-5"><%= @weapon.price %>€ </strong> per day </p>
+          <div class=""> <%= f.input :start_date, as: :date, order: [:day,:month, :year] %> </div>
+          <div class=""><%= f.input :end_date, as: :date, order: [:day, :month, :year]%> </div>
+          <div class=""><%= f.input :comment %> </div>
+          <div class="btn"><%= f.submit %> </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 </div>
