@@ -1,8 +1,27 @@
-<h1>Weapons#show</h1>
-<p>Find me in app/views/weapons/show.html.erb</p>
+<div class="container">
 
-<div>
-<h1> <%= @weapon.name %> </h1>
-<p> <%= weapon.rating %> - <%= @weapon.country %></p>
+  <div class="weapon-info">
+    <h1> <%= @weapon.name %> </h1>
+    <p> Efficacité : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
+    <div class= >
+    <%= cl_image_tag @weapon.photo.key, width:200, height:200, crop: :fill %>
+    </div>
+  </div>
 
+  <div >
+    <div>
+      <p> <%= @weapon.owner.username %> </p>
+      <p> <%= @weapon.details %></p>
+    </div>
+
+    <div class="card col-4">
+      <%= simple_form_for(@order) do |f| %>
+      <p><%= @weapon.price %>€ per day </p>
+      <div class=""> <%= f.input :start_date, as: :date, order: [:day,:month, :year] %> </div>
+      <div class=""><%= f.input :end_date, as: :date, order: [:day, :month, :year]%> </div>
+      <div class=""><%= f.input :comment %> </div>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
