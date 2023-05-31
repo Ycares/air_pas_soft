@@ -3,17 +3,23 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border: black solid 1px;
   padding: 5px;
 }
 
 .weapon-info-box {
   display: flex;
-  border: black solid 1px;
 }
 
 .container{
-  background-color: rgb(235, 234, 234);
-  border: black solid 1px;
   margin-top: 15px;
+  // box-shadow: 3px 3px 3px black;
+}
+
+.card {
+  box-shadow: 3px 3px 3px rgb(200, 196, 196) ;
+
+}
+
+.img-owner-weapon img{
+  border-radius: 50%;
 }
