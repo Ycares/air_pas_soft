@@ -1,6 +1,6 @@
 <div class="container ">
-  <div class="weapons-info-box">
-    <div class="weapon-info">
+
+    <div class="weapon-info ">
       <h1> <%= @weapon.name %> </h1>
       <p> Efficacité : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
       <div class= >
@@ -10,7 +10,7 @@
 
     <div class="row pt-5" >
       <div class="col">
-        <p> <%= @weapon.owner.username %> </p>
+        <h2> <%= @weapon.owner.username %> </h2>
         <p> <%= @weapon.details %></p>
       </div>
 
@@ -28,5 +28,4 @@
 
       </div>
     </div>
-  </div>
 </div>

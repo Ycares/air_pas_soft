@@ -8,5 +8,12 @@
 }
 
 .weapon-info-box {
-  
+  display: flex;
+  border: black solid 1px;
+}
+
+.container{
+  background-color: rgb(235, 234, 234);
+  border: black solid 1px;
+  margin-top: 15px;
 }
