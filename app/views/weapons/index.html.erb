@@ -1,2 +1,30 @@
-<h1>Weapons#index</h1>
-<p>Find me in app/views/weapons/index.html.erb</p>
+
+
+<div class="container ">
+  <h1>All our availables weapons  : </h1>
+  <div class="row" >
+    <% @weapons.each do |weapon| %>
+      <div class="col-3">
+        <%# <% if weapon.category == category %>
+        <div class="card-weapon mb-4">
+            <% if weapon.photo.attached? %>
+              <%= cl_image_tag weapon.photo.key, crop: :fill %>
+            <% else %>
+              <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+            <% end %>
+            <div class="card-weapon-infos">
+              <div>
+                <h2> <%= link_to weapon.name, weapon_path(weapon) %> </h2>
+                <p> <%= weapon.details %></p>
+              </div>
+              <h2 class="card-weapon-pricing"><%= weapon.price.to_i %>&nbsp;€ </h2>
+              <%= cl_image_tag weapon.owner.photo.key, crop: :fill, :class => "card-weapon-user avatar-large" %>
+              <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-weapon-user avatar-bordered" /> %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  <%# <button> %>
+    <%= link_to "Back to Homepage", root_path, class: "btn btn-primary" %>
+  <%# </button> %>
+</div>
