@@ -38,6 +38,9 @@ ycare = User.create!(
   age: 23,
   experience: "Newbie"
 )
+file = File.open(Rails.root.join("db/seeds/users_img/ycare_light.jpg"))
+ycare.photo.attach(io: file, filename: "ycare_light.jpg", content_type: "image/jpeg")
+
 clara = User.create!(
   username: "Clara44",
   email: "clara@survival.com",
@@ -47,6 +50,9 @@ clara = User.create!(
   age: 18,
   experience: "Confirmed"
 )
+file = File.open(Rails.root.join("db/seeds/users_img/Clara_light.jpg"))
+clara.photo.attach(io: file, filename: "Clara_light.jpg", content_type: "image/jpeg")
+
 vince = User.create!(
   username: "Vincenzo",
   email: "vincenzo@wanadoo.fr",
@@ -56,6 +62,8 @@ vince = User.create!(
   age: 58,
   experience: "Intermediate"
 )
+file = File.open(Rails.root.join("db/seeds/users_img/vince_light.jpg"))
+vince.photo.attach(io: file, filename: "vince_light.jpg", content_type: "image/jpeg")
 
 puts "Creating weapons..."
 
@@ -127,6 +135,74 @@ weapon_arbalete = Weapon.create!(
 file = File.open(Rails.root.join("db/seeds/weapons_img/traditionnal_arbalete.jpg"))
 weapon_arbalete.photo.attach(io: file, filename: "traditionnal_arbalete.jpg", content_type: "image/jpeg")
 
+weapon_khukuri = Weapon.create!(
+  {
+  name: "Khukuri",
+  details: "A curved Nepalese knife used as both a tool and a weapon.",
+  origin_country: "Nepal",
+  era_of_use: "Various periods",
+  characteristics: "Forward-curving blade, versatile for chopping and slashing",
+  category: "Attack",
+  weapon_type: "Sword & Saber",
+  price: rand(10...5000),
+  efficiency_rate: 7,
+  owner: clara
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Khukuri.jpg"))
+weapon_khukuri.photo.attach(io: file, filename: "Khukuri.jpg", content_type: "image/jpeg")
+
+weapon_nunchaku = Weapon.create!(
+  {
+    name: "Chinese Nunchaku",
+    details: "Two short sticks connected by a chain or rope.",
+    origin_country: "China",
+    era_of_use: "Various periods",
+    characteristics: "Versatile, used for striking and trapping",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 7,
+    owner: clara
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Nunchaku.jpg"))
+weapon_nunchaku.photo.attach(io: file, filename: "Khukuri.jpg", content_type: "image/jpeg")
+
+
+weapon_rapier = Weapon.create!(
+  {
+    name: "Rapier",
+    details: "A slender, sharply pointed sword used primarily for thrusting attacks.",
+    origin_country: "Europe",
+    era_of_use: "16th to 18th centuries",
+    characteristics: "Fast and precise thrusting techniques",
+    category: "Defense",
+    weapon_type: "Sword & Saber",
+    price: rand(10...5000),
+    efficiency_rate: 8,
+    owner: clara
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Rapier.png"))
+weapon_rapier.photo.attach(io: file, filename: "Rapier.png", content_type: "image/png")
+
+weapon_boomerang = Weapon.create!(
+  {
+    name: "Australian Boomerang",
+    details: "A thrown tool typically made of wood, designed to return to the thrower.",
+    origin_country: "Australia",
+    era_of_use: "Ancient and modern periods",
+    characteristics: "Returning projectile, used for hunting and warfare",
+    category: "Attack",
+    weapon_type: "Throwing weapon",
+    price: rand(10...5000),
+    efficiency_rate: 6,
+    owner: clara
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/boomerang.jpg"))
+weapon_boomerang.photo.attach(io: file, filename: "boomerang.jpg", content_type: "image/jpeg")
 
 # # Create Weapon records
 # weapons.each do |weapon|
@@ -211,29 +287,8 @@ Order.create!(
 #   efficiency_rate: 7,
 #   owner: ycare
 # },
-# {
-#   name: "Khukuri",
-#   details: "A curved Nepalese knife used as both a tool and a weapon.",
-#   origin_country: "Nepal",
-#   era_of_use: "Various periods",
-#   characteristics: "Forward-curving blade, versatile for chopping and slashing",
-#   category: "Attack",
-#   weapon_type: "Sword & Saber",
-#   price: rand(10...5000),
-#   efficiency_rate: 7,
-#   owner: clara
-# },
-# {
-#   name: "Australian Boomerang",
-#   details: "A thrown tool typically made of wood, designed to return to the thrower.",
-#   origin_country: "Australia",
-#   era_of_use: "Ancient and modern periods",
-#   characteristics: "Returning projectile, used for hunting and warfare",
-#   category: "Attack",
-#   weapon_type: "Throwing weapon",
-#   efficiency_rate: 6,
-#   owner: ycare
-# },
+
+
 # {
 #   name: "European Buckler",
 #   details: "A small round shield held by a handle or strapped to the forearm.",
@@ -258,30 +313,7 @@ Order.create!(
 #   efficiency_rate: 8,
 #   owner: vincent
 # },
-# {
-#   name: "Chinese Nunchaku",
-#   details: "Two short sticks connected by a chain or rope.",
-#   origin_country: "China",
-#   era_of_use: "Various periods",
-#   characteristics: "Versatile, used for striking and trapping",
-#   category: "Defense",
-#   weapon_type: "Line weapon",
-#   price: rand(10...5000),
-#   efficiency_rate: 7,
-#   owner: vincent
-# },
-# {
-#   name: "Rapier",
-#   details: "A slender, sharply pointed sword used primarily for thrusting attacks.",
-#   origin_country: "Europe",
-#   era_of_use: "16th to 18th centuries",
-#   characteristics: "Fast and precise thrusting techniques",
-#   category: "Defense",
-#   weapon_type: "Sword & Saber",
-#   price: rand(10...5000),
-#   efficiency_rate: 8,
-#   owner: clara
-# },
+
 # {
 #   name: "Sai",
 #   details: "A three-pronged dagger used in martial arts and self-defense.",
