@@ -6,7 +6,7 @@
 
     <div class="row" >
       <div class="col me-5">
-        <div class="pb-5">
+        <div class="border-rounded pb-5">
           <%= cl_image_tag @weapon.photo.key, width:800, height:400, crop: :fill %>
         </div>
 
@@ -14,10 +14,10 @@
           <h2 class="card-header pb-3 h2-poppins">Weapon details</h2>
           <p class="pb-4"><%= @weapon.details %></p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= @weapon.characteristics %></li>
-            <li class="list-group-item"><%= @weapon.category%></li>
-            <li class="list-group-item"><%= @weapon.weapon_type%></li>
-            <li class="list-group-item">Effectiveness : <%= @weapon.efficiency_rate%>/10</li>
+            <li class="list-group-item"><i class="fa-solid fa-magnifying-glass" style="color: #bdae6d;"></i><%= @weapon.characteristics %></li>
+            <li class="list-group-item"><i class="fa-solid fa-burst" style="color: #bdae6d;"></i><%= @weapon.category%></li>
+            <li class="list-group-item"><i class="fa-solid fa-hammer" style="color: #bdae6d;"></i><%= @weapon.weapon_type%></li>
+            <li class="list-group-item "><i class="fa-sharp fa-solid fa-droplet" style="color: #bdae6d;"></i>Effectiveness : <%= @weapon.efficiency_rate%>/10</li>
           </ul>
         </div>
 
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="col card p-3">
+      <div class="col card card-booking p-3">
         <%# <%= simple_form_for(@order) do |f| %>
         <%= simple_form_for [@weapon, @order] do |f| %>
           <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>

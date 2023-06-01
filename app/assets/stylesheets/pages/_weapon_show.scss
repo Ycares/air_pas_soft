@@ -15,7 +15,7 @@
   // box-shadow: 3px 3px 3px black;
 }
 
-.card {
+.card-booking {
   box-shadow: 3px 3px 3px rgb(200, 196, 196);
   border-radius: 5px;
   height: fit-content;
@@ -34,4 +34,12 @@
 .flex-container {
   display: flex;
   justify-content: space-between;
+}
+
+.border-rounded img {
+  border-radius: 5px;
+}
+
+i {
+  padding-right: 10px;
 }
