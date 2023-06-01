@@ -115,8 +115,8 @@ weapon_kusarigama = Weapon.create!(
     owner: ycare
   }
 )
-file = File.open(Rails.root.join("db/seeds/weapons_img/Kusarigama.jpg"))
-weapon_kusarigama.photo.attach(io: file, filename: "Kusarigama.jpg", content_type: "image/jpeg")
+file = File.open(Rails.root.join("db/seeds/weapons_img/Kusarigama2.jpg"))
+weapon_kusarigama.photo.attach(io: file, filename: "Kusarigama2.jpg", content_type: "image/jpeg")
 
 weapon_arbalete = Weapon.create!(
   {
@@ -204,6 +204,110 @@ weapon_boomerang = Weapon.create!(
 file = File.open(Rails.root.join("db/seeds/weapons_img/boomerang.jpg"))
 weapon_boomerang.photo.attach(io: file, filename: "boomerang.jpg", content_type: "image/jpeg")
 
+
+weapon_gauntlet = Weapon.create!(
+  {
+    name: "Gauntlet",
+    details: "A glove with a metal-plated backhand used for hand-to-hand combat and defense.",
+    origin_country: "Various civilizations",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Protective armor, used for blocking and striking",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...50),
+    efficiency_rate: 8,
+    owner: vince
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Gauntlet.jpg"))
+weapon_gauntlet.photo.attach(io: file, filename: "Gauntlet.jpg", content_type: "image/jpeg")
+
+weapon_glaive = Weapon.create!(
+  {
+    name: "Medieval Glaive",
+    details: "A Polearm with a large, single-edged blade on the end.",
+    origin_country: "Europe",
+    era_of_use: "Medieval and Renaissance periods",
+    characteristics: "Long reach, used for cutting and thrusting",
+    category: "Defense",
+    weapon_type: "Polearm",
+    price: rand(10...5000),
+    efficiency_rate: 9,
+    owner: vince
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/glaive.png"))
+weapon_glaive.photo.attach(io: file, filename: "glaive.png", content_type: "image/png")
+
+weapon_tessen = Weapon.create!(
+  {
+    name: "Japanese Tessen",
+    details: "A fan made of iron plates used by samurai as a concealed weapon.",
+    origin_country: "Japan",
+    era_of_use: "Feudal Japan",
+    characteristics: "Concealable, used for striking and as a defensive shield",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...5000),
+    efficiency_rate: 7,
+    owner: ycare
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Tessen.jpg"))
+weapon_tessen.photo.attach(io: file, filename: "Tessen.jpg", content_type: "image/jpeg")
+
+weapon_shield = Weapon.create!(
+  {
+    name: "Viking Shield",
+    details: "A large shield used by medieval Vikings knights.",
+    origin_country: "France",
+    era_of_use: "Medieval period",
+    characteristics: "Heavy, used for blocking and protecting into team battlefield",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10...500),
+    efficiency_rate: 10,
+    owner: vince
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/viking_bouclier.jpg"))
+weapon_shield.photo.attach(io: file, filename: "viking_bouclier.jpg", content_type: "image/jpeg")
+
+weapon_armor = Weapon.create!(
+  {
+    name: "Studded Leather Armor",
+    details: "A type of armor made of leather with metal studs or spikes attached.",
+    origin_country: "Various civilizations",
+    era_of_use: "Medieval period",
+    characteristics: "Lightweight, provides moderate protection",
+    category: "Defense",
+    weapon_type: "Line weapon",
+    price: rand(10..800),
+    efficiency_rate: 8,
+    owner: ycare
+  }
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/Leather_Armor.jpg"))
+weapon_armor.photo.attach(io: file, filename: "Leather_Armor.jpg", content_type: "image/jpeg")
+
+weapon_katar = Weapon.create!(
+{
+  name: "Katar",
+  details: "A push dagger characterized by its H-shaped handle.",
+  origin_country: "India",
+  era_of_use: "Medieval and early modern periods",
+  characteristics: "Thrusting weapon, used for close combat",
+  category: "Defense",
+  weapon_type: "Sword & Saber",
+  price: rand(10...5000),
+  efficiency_rate: 8,
+  owner: clara
+}
+)
+file = File.open(Rails.root.join("db/seeds/weapons_img/katar.jpeg"))
+weapon_katar.photo.attach(io: file, filename: "katar.jpeg", content_type: "image/jpeg")
+
+
 # # Create Weapon records
 # weapons.each do |weapon|
 #   Weapon.create(weapon)
@@ -213,7 +317,7 @@ puts "Creating orders..."
 
 #TODO : how to differenciate old orders (past) from new ones (order to come) ?
 
-Order.create!(
+order = Order.create!(
   user:      ycare,
   weapon:  weapon_arbalete,
   start_date:   "2023-06-02",
@@ -221,8 +325,10 @@ Order.create!(
   total_price: 1110,
   status: true
 )
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
 
-Order.create!(
+order = Order.create!(
   user:      ycare,
   weapon:  weapon_katana,
   start_date:   "2023-08-02",
@@ -230,8 +336,11 @@ Order.create!(
   total_price: 5500,
   status: false
 )
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
 
-Order.create!(
+order = Order.create!(
+  # should be past_order
   user:      clara,
   weapon:  weapon_arbalete,
   start_date:   "2022-06-02",
@@ -240,8 +349,62 @@ Order.create!(
   status: true,
   comment: "a very nice traditionnal tools, helped me to feel safe during my holidays"
 )
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
 
-Order.create!(
+order = Order.create!(
+  # should be past_order
+  user:      clara,
+  weapon:  weapon_gauntlet,
+  start_date:   "2023-04-02",
+  end_date:     "2023-05-10",
+  total_price: 500,
+  status: true,
+  comment: "a very nice traditionnal tools, helped me to feel safe during my holidays"
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  # should be past_order
+  user:      clara,
+  weapon:  weapon_shield,
+  start_date:   "2023-01-02",
+  end_date:     "2023-01-15",
+  total_price: 500,
+  status: true,
+  comment: "a very nice traditionnal tools, helped me to feel safe during my holidays"
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  # should be futur_order
+  user:      clara,
+  weapon:  weapon_armor,
+  start_date:   "2023-07-02",
+  end_date:     "2023-08-10",
+  total_price: 1500,
+  status: true,
+  comment: "a very nice traditionnal tools, helped me to feel safe during my holidays"
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  # should be current_order
+  user:      clara,
+  weapon:  weapon_kusarigama,
+  start_date:   "2023-04-02",
+  end_date:     "2023-06-15",
+  total_price: 500,
+  status: true,
+  comment: "I love you weapon, i would like to order it again ! "
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
   user:      vince,
   weapon:  weapon_shuriken,
   start_date:   "2023-01-02",
@@ -250,6 +413,8 @@ Order.create!(
   status: true,
   comment: " a bit expensive but it was worth it, I finally got the rat in my garden !"
 )
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
 
 # TODO : add more weapons seeds :
 # {
@@ -376,90 +541,9 @@ Order.create!(
 #   efficiency_rate: 8,
 #   owner: clara
 # },
-# {
-#   name: "Gauntlet",
-#   details: "A glove with a metal-plated backhand used for hand-to-hand combat and defense.",
-#   origin_country: "Various civilizations",
-#   era_of_use: "Medieval and Renaissance periods",
-#   characteristics: "Protective armor, used for blocking and striking",
-#   category: "Defense",
-#   weapon_type: "Line weapon",
-#   price: rand(10...5000),
-#   efficiency_rate: 8,
-#   owner: clara
-# },
-# {
-#   name: "Medieval Glaive",
-#   details: "A Polearm with a large, single-edged blade on the end.",
-#   origin_country: "Europe",
-#   era_of_use: "Medieval and Renaissance periods",
-#   characteristics: "Long reach, used for cutting and thrusting",
-#   category: "Defense",
-#   weapon_type: "Polearm",
-#   price: rand(10...5000),
-#   efficiency_rate: 9,
-#   owner: clara
-# },
-# {
-#   name: "Japanese Tessen",
-#   details: "A fan made of iron plates used by samurai as a concealed weapon.",
-#   origin_country: "Japan",
-#   era_of_use: "Feudal Japan",
-#   characteristics: "Concealable, used for striking and as a defensive shield",
-#   category: "Defense",
-#   weapon_type: "Line weapon",
-#   price: rand(10...5000),
-#   efficiency_rate: 7,
-#   owner: clara
-# },
-# {
-#   name: "Bouclier",
-#   details: "A large shield used by medieval European knights.",
-#   origin_country: "Europe",
-#   era_of_use: "Medieval period",
-#   characteristics: "Heavy, used for blocking and protecting",
-#   category: "Defense",
-#   weapon_type: "Line weapon",
-#   price: rand(10...5000),
-#   efficiency_rate: 10,
-#   owner: vincent
-# },
-# {
-#   name: "Parrying Dagger",
-#   details: "A specialized dagger used in conjunction with a sword for blocking and parrying.",
-#   origin_country: "Europe",
-#   era_of_use: "Medieval and Renaissance periods",
-#   characteristics: "Designed for deflecting and trapping opponent's weapon",
-#   category: "Defense",
-#   weapon_type: "Sword & Saber",
-#   price: rand(10...5000),
-#   efficiency_rate: 8,
-#   owner: vincent
-# },
-# {
-#   name: "Katar",
-#   details: "A push dagger characterized by its H-shaped handle.",
-#   origin_country: "India",
-#   era_of_use: "Medieval and early modern periods",
-#   characteristics: "Thrusting weapon, used for close combat",
-#   category: "Defense",
-#   weapon_type: "Sword & Saber",
-#   price: rand(10...5000),
-#   efficiency_rate: 8,
-#   owner: vincent
-# },
-# {
-#   name: "Studded Leather Armor",
-#   details: "A type of armor made of leather with metal studs or spikes attached.",
-#   origin_country: "Various civilizations",
-#   era_of_use: "Medieval period",
-#   characteristics: "Lightweight, provides moderate protection",
-#   category: "Defense",
-#   weapon_type: "Line weapon",
-#   price: rand(10...5000),
-#   efficiency_rate: 8,
-#   owner: vincent
-# }
+#
+
+
 
 puts "Finished!"
 
