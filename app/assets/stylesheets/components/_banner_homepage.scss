@@ -2,20 +2,19 @@
   background-image: url("banner_picture.jpg");
   background-size: cover;
   background-position: center;
-  padding: 190px 0;
+  padding: 180px 0;
 }
 
 .banner-homepage h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  font-size: 50px;
+  color: #222222;
+  // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 60px;
 }
 
 
 .banner-homepage p {
-  font-size: 20px;
-  color: Black;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 22px;
+  color: #222222;
+  // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding-bottom: 20px;
 }

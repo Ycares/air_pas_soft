@@ -1,0 +1,25 @@
+
+<div class="container ">
+  <div class="col form-new-weapon">
+    <H1> New Weapon </H1>
+    <%= simple_form_for(@weapon) do |f| %>
+    <div class="d-flex" style="gap:15px">
+      <%= f.input :name, wrapper_html: { class: "flex-grow-1"} %>
+      <%= f.input :price, wrapper_html: {class: "flex-grow-1"} %>
+    </div>
+    <div class="d-flex" style="gap:15px">
+      <%= f.input :category, collection: ['Attack', 'Defense', 'Line Weapon', 'Polearm', 'Other'],wrapper_html: { class: "flex-grow-1"}  %>
+      <%= f.input :weapon_type, collection: ['Sword & Saber', 'Throwing weapons', 'Hunt', 'Trap', 'Torture'], wrapper_html: { class: "flex-grow-1"} %>
+    </div>
+    <div>
+      <%= f.input :characteristics, collection: ['Attack', 'Defense', 'Line Weapon', 'Polearm', 'Other'] , as: :select, input_html: { multiple: true },wrapper_html: { class: "flex-grow-1"} %>
+      <%= f.input :era_of_use%>
+    </div>
+    <div class="d-flex" style="gap:15px">
+      <%= f.input :details,:as => :text, wrapper_html: { class: "flex-grow-1"} %>
+    </div>
+      <%= f.input :origin_country%>
+      <%= f.submit "Add", class:"btn" %>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <h1 class="pb-4">All our available weapons</h1>
+  <h1 class="pb-4"> <%= @user.username%>, here are all your weapons  : </h1>
   <div class="row" >
     <% @weapons.each do |weapon| %>
       <div class="col-3">
@@ -12,10 +12,10 @@
             <% end %>
             <div class="card-weapon-infos">
               <div>
-                <h2> <%= link_to weapon.name, weapon_path(weapon) %> </h2>
+               <h2> <%= link_to weapon.name, weapon_path(weapon) %></h2>
                 <p> <%= weapon.details %></p>
               </div>
-              <h2 class="card-weapon-pricing"><%= weapon.price.to_i %>&nbsp;€ </h2>
+              <!--<h2 class="card-weapon-pricing">&nbsp;€ </h2> -->
               <%= cl_image_tag weapon.owner.photo.key, crop: :fill, :class => "card-weapon-user avatar-large" %>
               <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-weapon-user avatar-bordered" /> %>
             </div>
@@ -23,4 +23,5 @@
       </div>
     <% end %>
   </div>
+
 </div>

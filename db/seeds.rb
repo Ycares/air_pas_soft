@@ -120,7 +120,7 @@ weapon_kusarigama.photo.attach(io: file, filename: "Kusarigama2.jpg", content_ty
 
 weapon_arbalete = Weapon.create!(
   {
-    name: "Arbalète",
+    name: "Crossbow",
     details: "A ranged weapon similar to a crossbow, consisting of a bow-like assembly mounted on a stock.",
     origin_country: "Europe",
     era_of_use: "Medieval period",

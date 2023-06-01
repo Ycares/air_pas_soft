@@ -7,21 +7,39 @@
 }
 
 .weapon-info-box {
-
   display: flex;
 }
 
-.container{
+.container {
   margin-top: 15px;
   // box-shadow: 3px 3px 3px black;
 }
 
-.card {
-  box-shadow: 3px 3px 3px rgb(200, 196, 196) ;
-
+.card-booking {
+  box-shadow: 3px 3px 3px rgb(200, 196, 196);
+  border-radius: 5px;
+  height: fit-content;
 }
 
 .img-owner-weapon img{
   border-radius: 50%;
+}
 
+.h2-poppins {
+  font-family: 'Poppins', sans-serif, "Work Sans", "Helvetica", "sans-serif";
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.border-rounded img {
+  border-radius: 5px;
+}
+
+i {
+  padding-right: 10px;
 }

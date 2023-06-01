@@ -15,6 +15,7 @@
   </head>
 
   <body>
+
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
         <%= link_to "/", class: "navbar-brand" do %>
@@ -27,22 +28,23 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
-            <%# if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "Add a weapon", "/", class: "nav-link nav-text" %>
+            <% if user_signed_in? %>
+              <li class="nav-item nav-tab">
+                <%= link_to "My weapons", owner_weapons_path, class: "nav-link nav-text" %>
               </li>
               <li class="nav-item dropdown">
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "My orders", "#", class: "dropdown-item" %>
-                  <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+                  <%= link_to "My orders", orders_path, class: "dropdown-item" %>
+
+                  <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
                 </div>
               </li>
-            <%# else %>
-              <!--li class="nav-item"-->
-                <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-              <!--/li-->
-            <%# end %>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -55,7 +57,7 @@
 
     <div class="footer position-relative">
       <div class="footer-copyright position-relative position-absolute top-50 start-50 translate-middle">
-        <h2 class="text-center fs-5 h2-footer">Air pas Soft</h2>
+        <h2 class="text-center fs-5 h2-footer">Air pas Soft©</h2>
       </div>
     </div>
 

@@ -9,16 +9,22 @@
     transition: 0.1s ease-out;
   }
 
+
+  border-radius: 5px;
+  min-height: 310px;
+
 }
 
 .card-weapon>img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  border-block-end: 0.5px solid lightgrey;
 }
 
 .card-weapon h2 {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Poppins';
   font-weight: bold;
   margin: 0;
 }
@@ -29,6 +35,9 @@
   margin: 0;
 }
 
+.card-weapon a {
+  color: #BDAE6D;
+}
 
 .card-weapon .card-weapon-infos {
   padding: 16px;
@@ -43,4 +52,8 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-weapon a:hover {
+  color: #988948;
 }
