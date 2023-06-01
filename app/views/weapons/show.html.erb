@@ -1,8 +1,7 @@
 <div class="container pt-4 pb-5">
-
   <div class="col weapon-info pb-4">
     <h1> <%= @weapon.name %> </h1>
-    <p> Effectiveness : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
+    <p><%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
   </div>
 
     <div class="row" >
@@ -18,16 +17,18 @@
             <li class="list-group-item"><%= @weapon.characteristics %></li>
             <li class="list-group-item"><%= @weapon.category%></li>
             <li class="list-group-item"><%= @weapon.weapon_type%></li>
+            <li class="list-group-item">Effectiveness : <%= @weapon.efficiency_rate%>/10</li>
           </ul>
         </div>
 
-        <div class="flex-container">
+        <hr>
+
+        <div class="flex-container py-2">
           <h2 class="h2-poppins">From <%= @weapon.owner.username %> </h2>
           <div class="col-1">
             <p class="img-owner-weapon"><%= cl_image_tag @weapon.owner.photo.key, width: 50, height:50 %></p>
           </div>
         </div>
-
       </div>
 
       <div class="col card p-3">
@@ -40,54 +41,6 @@
           <%= f.input :total_price %>
           <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
         <% end %>
-      </div>
-    </div>
-</div>
-
-
-
-
-
-<%# CODE ALMIS %>
-
-<div class="container ">
-
-    <div class="weapon-info ">
-      <h1> <%= @weapon.name %> </h1>
-      <p class="pb-4" > Effectiveness : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
-      <div class= >
-      <%= cl_image_tag @weapon.photo.key, width:400, height:400, crop: :fill %>
-      </div>
-    </div>
-    <div class="card-owner-weapon">
-      <div class="row pt-5" >
-        <div class="col ">
-          <h2 class="pb-4"> <%= @weapon.owner.username %> </h2>
-          <h2 class="card-header"> Weapon details </h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" > <%= @weapon.details %></li>
-            <li class="list-group-item"><%= @weapon.characteristics %></li>
-            <li class="list-group-item"><%= @weapon.category%></li>
-            <li class="list-group-item"><%= @weapon.weapon_type%></li>
-          </ul>
-
-        </div>
-        <div class="col-1">
-          <p class="img-owner-weapon"><%= cl_image_tag @weapon.owner.photo.key, width: 50, height:50 %></p>
-        </div>
-
-        <div class="card col-4 m-2 p-3">
-          <%# <%= simple_form_for(@order) do |f| %>
-          <%= simple_form_for [@weapon, @order] do |f| %>
-            <%# <% raise %>
-            <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
-            <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
-            <%= f.input :end_date, as: :date, order: [:day, :month, :year]%>
-            <%= f.input :comment, placeholder: " Add precisions or questions relative to your order "%>
-            <%= f.input :total_price %>
-            <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
-          <% end %>
-        </div>
       </div>
     </div>
 </div>
