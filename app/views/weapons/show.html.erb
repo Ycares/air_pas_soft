@@ -25,12 +25,15 @@
         </div>
 
         <div class="card col-4 m-2 p-3">
-          <%= simple_form_for(@order) do |f| %>
-          <p> <strong class="fs-5"><%= @weapon.price %>€ </strong> per day </p>
-          <div class=""> <%= f.input :start_date, as: :date, order: [:day,:month, :year] %> </div>
-          <div class=""><%= f.input :end_date, as: :date, order: [:day, :month, :year]%> </div>
-          <div class=""><%= f.input :comment %> </div>
-          <div class="btn"><%= f.submit %> </div>
+          <%# <%= simple_form_for(@order) do |f| %>
+          <%= simple_form_for [@weapon, @order] do |f| %>
+            <%# <% raise %>
+            <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
+            <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
+            <%= f.input :end_date, as: :date, order: [:day, :month, :year]%>
+            <%= f.input :comment, placeholder: " Add precisions or questions relative to your order "%>
+            <%= f.input :total_price %>
+            <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
           <% end %>
         </div>
       </div>
