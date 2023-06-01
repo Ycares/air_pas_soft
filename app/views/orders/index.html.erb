@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <h1 class="pb-4"> <% @current_user.username%>, here are all your orders  : </h1>
+  <h1 class="pb-4"> <%= @user.username %>, here are all your orders  : </h1>
   <div class="row" >
     <% @orders.each do |order| %>
       <div class="col-3">

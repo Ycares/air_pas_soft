@@ -1,0 +1,27 @@
+<div class="container py-5">
+  <h1 class="pb-4"> <%= @user.username%>, here are all your weapons  : </h1>
+  <div class="row" >
+    <% @weapons.each do |weapon| %>
+      <div class="col-3">
+        <%# <% if weapon.category == category %>
+        <div class="card-weapon mb-4">
+            <% if weapon.photo.attached? %>
+              <%= cl_image_tag weapon.photo.key, crop: :fill %>
+            <% else %>
+              <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+            <% end %>
+            <div class="card-weapon-infos">
+              <div>
+               <h2> <%= link_to weapon.name, weapon_path(weapon) %></h2>
+                <p> <%= weapon.details %></p>
+              </div>
+              <!--<h2 class="card-weapon-pricing">&nbsp;€ </h2> -->
+              <%= cl_image_tag weapon.owner.photo.key, crop: :fill, :class => "card-weapon-user avatar-large" %>
+              <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-weapon-user avatar-bordered" /> %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
