@@ -1,49 +1,44 @@
-<div class="container ">
-    <div class="row">
-    <div class="row weapon-info ">
-      <h1> <%= @weapon.name %> </h1>
-      <p class="pb-4" > Effectiveness : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
-      <div class= >
-      <%= cl_image_tag @weapon.photo.key, width:400, height:400, crop: :fill %>
+<div class="container py-4">
 
-    </div>
+  <div class="col weapon-info pb-4">
+    <h1> <%= @weapon.name %> </h1>
+    <p> Effectiveness : <%= @weapon.efficiency_rate %>/10 - <%= @weapon.origin_country %> - <%= @weapon.era_of_use %></p>
+  </div>
 
-
-
-
-    </div>
-    <div class="card-owner-weapon">
-      <div class="row pt-5" >
-        <div class="col ">
-          <h2 class="pb-4"> <%= @weapon.owner.username %> </h2>
-          <h2 class="card-header"> Weapon details </h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" > <%= @weapon.details %></li>
-            <li class="list-group-item"><%= @weapon.characteristics %></li>
-            <li class="list-group-item"><%= @weapon.category%></li>
-            <li class="list-group-item"><%= @weapon.weapon_type%></li>
-          </ul>
+    <div class="row" >
+      <div class="col">
+        <div class="col pb-5">
+          <%= cl_image_tag @weapon.photo.key, width:800, height:400, crop: :fill %>
         </div>
 
+        <h2 class="card-header pb-3 h2-poppins">Weapon details</h2>
+        <p class="pb-4"><%= @weapon.details %></p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= @weapon.characteristics %></li>
+          <li class="list-group-item"><%= @weapon.category%></li>
+          <li class="list-group-item"><%= @weapon.weapon_type%></li>
+        </ul>
+
+        <h2 class="py-5 h2-poppins"> <%= @weapon.owner.username %> </h2>
         <div class="col-1">
           <p class="img-owner-weapon"><%= cl_image_tag @weapon.owner.photo.key, width: 50, height:50 %></p>
         </div>
 
-        <div class="card col-4 m-2 p-3">
-          <%# <%= simple_form_for(@order) do |f| %>
-          <%= simple_form_for [@weapon, @order] do |f| %>
-            <%# <% raise %>
-            <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
-            <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
-            <%= f.input :end_date, as: :date, order: [:day, :month, :year]%>
-            <%= f.input :comment, placeholder: " Add precisions or questions relative to your order "%>
-            <%= f.input :total_price %>
-            <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
-          <% end %>
-        </div>
+      </div>
 
+      <div class="card col-4 p-3">
+        <%# <%= simple_form_for(@order) do |f| %>
+        <%= simple_form_for [@weapon, @order] do |f| %>
+          <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
+          <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
+          <%= f.input :end_date, as: :date, order: [:day, :month, :year]%>
+          <%= f.input :comment, placeholder: " Add precisions or questions relative to your order "%>
+          <%= f.input :total_price %>
+          <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
+        <% end %>
       </div>
     </div>
+
 </div>
 
 

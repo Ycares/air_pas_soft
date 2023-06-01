@@ -16,9 +16,16 @@
 }
 
 .card {
-  box-shadow: 3px 3px 3px rgb(200, 196, 196) ;
+  box-shadow: 3px 3px 3px rgb(200, 196, 196);
+  border-radius: 5px;
 }
 
 .img-owner-weapon img{
   border-radius: 50%;
+}
+
+.h2-poppins {
+  font-family: 'Poppins', sans-serif, "Work Sans", "Helvetica", "sans-serif";
+  font-size: 26px;
+  font-weight: 600;
 }
