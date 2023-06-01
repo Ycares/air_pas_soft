@@ -5,8 +5,9 @@ class WeaponsController < ApplicationController
   end
 
   def show
-    @order = Order.new
     @weapon = Weapon.find(params[:id])
+    @order = Order.new
+    @order.weapon = @weapon
   end
 
   def edit
