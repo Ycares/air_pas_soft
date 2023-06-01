@@ -12,6 +12,4 @@ class Order < ApplicationRecord
 
   # TO DO : add a min value for total_price : must be > unit price !
   # validates :comment, length: { minimum: 6 }
-
-
 end
