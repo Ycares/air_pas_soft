@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <h1 class="pb-4">All our availables weapons  : </h1>
+  <h1 class="pb-4">All our available weapons</h1>
   <div class="row" >
     <% @weapons.each do |weapon| %>
       <div class="col-3">
@@ -23,9 +23,4 @@
       </div>
     <% end %>
   </div>
-  <%# <button> %>
-  <div class="position-relative pb-5">
-  <%= link_to "Back to Homepage", root_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
-  </div>
-  <%# </button> %>
 </div>

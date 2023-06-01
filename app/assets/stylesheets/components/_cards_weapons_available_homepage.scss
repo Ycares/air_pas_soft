@@ -1,3 +1,9 @@
 .card-weapons-available {
   margin-inline: 5px;
+  transition: 0.3s ease-out;
+}
+
+.card-weapons-available:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-out;
 }

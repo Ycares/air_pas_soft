@@ -11,6 +11,28 @@
 @import "components/index";
 @import "pages/index";
 
+body{
+  min-height: 100vh;
+  margin: 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header{
+  min-height:50px;
+  background:lightcyan;
+}
+
+footer{
+  min-height:50px;
+  background:PapayaWhip;
+}
+
 a {
   text-decoration: none;
+}
+
+hr {
+  border: 0.5px solid #666666;
 }

@@ -15,6 +15,7 @@
   </head>
 
   <body>
+
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
         <%= link_to "/", class: "navbar-brand" do %>
@@ -28,13 +29,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "Add a weapon",new_owner_weapon_path, class: "nav-link nav-text" %>
+              <li class="nav-item nav-tab">
+                <%= link_to "My weapons", owner_weapons_path, class: "nav-link nav-text" %>
               </li>
               <li class="nav-item dropdown">
                 <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "My orders",orders_path , class: "dropdown-item" %>
+                  <%= link_to "My orders", orders_path, class: "dropdown-item" %>
+
                   <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
                 </div>
               </li>
