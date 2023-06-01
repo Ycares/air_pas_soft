@@ -30,17 +30,17 @@
           </div>
         </div>
       </div>
-
-      <div class="col card card-booking p-3">
-        <%# <%= simple_form_for(@order) do |f| %>
-        <%= simple_form_for [@weapon, @order] do |f| %>
-          <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
-          <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
-          <%= f.input :end_date, as: :date, order: [:day, :month, :year]%>
-          <%= f.input :comment, placeholder: " Add precisions or questions relative to your order "%>
-          <%= f.input :total_price %>
-          <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
-        <% end %>
-      </div>
+      
+          <div class="col card card-booking p-3">
+          <%= simple_form_for [@weapon, @order] do |f| %>
+            <p> <strong class="fs-5"><%= @weapon.price.to_i %>€ </strong> per day </p>
+            <%# <%= f.input :start_date, as: :date, order: [:day,:month, :year] %>
+            <%= f.input :start_date, as: :date,  html5: true, :label =>"#{@weapon.category} beginning", input_html: {class: "calendar"}%>
+            <%= f.input :end_date, as: :date,  html5: true, :label =>"#{@weapon.category} End", input_html: {class: "calendar"}%>
+            <%= f.input :comment, :label =>"Order comment", placeholder: "Do you need to add precisions or questions relative to your order  ?"%>
+            <%#  Add some JS to display here the total_price %>
+            <%# <%= f.input :total_price %>
+            <%= f.submit "Order it ! ", class:"btn btn-primary"  %>
+          <% end %>
     </div>
 </div>

@@ -1,4 +1,4 @@
-.card-weapon {
+.card-order {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -9,51 +9,39 @@
     transition: 0.1s ease-out;
   }
 
-
-  border-radius: 5px;
-  min-height: 310px;
-
 }
 
-.card-weapon>img {
-  height: 200px;
+.card-order>img {
+  height: 300px;
   width: 100%;
   object-fit: cover;
-  border-block-end: 0.5px solid lightgrey;
 }
 
-.card-weapon h2 {
-  font-size: 18px;
-  font-family: 'Poppins';
+.card-order h2 {
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-weapon p {
+.card-order p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
-.card-weapon a {
-  color: #BDAE6D;
-}
 
-.card-weapon .card-weapon-infos {
+.card-order .card-order-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  height: 100px;
 }
 
-.card-weapon-infos .card-weapon-user {
+.card-order-infos .card-order-user {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
-}
-
-.card-weapon a:hover {
-  color: #988948;
 }

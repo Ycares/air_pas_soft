@@ -1,30 +1,103 @@
+<!--
+<%# TODO : mettre les bonnes infos dans les cards : %>
+  >> order.total_price
+  >> order.review + weapon rank ?
+  >> durée de localtion @order_duration
+  >> others ??
+-->
+
 <div class="container py-5">
-  <h1 class="pb-4"> <%= @user.username %>, here are all your orders  : </h1>
+
+  <h1 class="pb-4"> <%= @user.username%>, review all your orders  </h1>
+  <div class="container">
+    <h2>Order to come </h2>
+  </div>
+
   <div class="row" >
-    <% @orders.each do |order| %>
-      <div class="col-3">
-        <%# <% if weapon.category == category %>
-        <div class="card-weapon mb-4">
-            <% if order.weapon.photo.attached? %>
-              <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
-            <% else %>
-              <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
-            <% end %>
-            <div class="card-weapon-infos">
-              <div>
-                <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
-                <p> <%= order.weapon.details %></p>
-              </div>
-              <h2 class="card-weapon-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
-              <%= cl_image_tag order.weapon.owner.photo.key, crop: :fill, :class => "card-weapon-user avatar-large" %>
-              <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-weapon-user avatar-bordered" /> %>
+    <% @futur_orders.each do |order| %>
+      <div class="col-4">
+        <div class="card-order mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-order-infos">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> Duration : <%= order.duration  %> days </p>
             </div>
+            <h2 class="card-order-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.weapon.owner.photo.key, crop: :fill, :class => "card-order-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-user avatar-bordered" /> %>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-  <%# <button> %>
-  <div class="position-relative pb-5">
-  <%= link_to "Back to Weapons", weapons_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
+</div>
+
+
+<div class="container py-5">
+  <div class="container">
+    <h2> Being Rent </h2>
   </div>
+  <div class="row" >
+    <% @current_orders.each do |order| %>
+      <div class="col-4">
+        <div class="card-order mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-order-infos">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> Duration : <%= order.duration %> days </p>
+            </div>
+            <h2 class="card-order-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.weapon.owner.photo.key, crop: :fill, :class => "card-order-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-user avatar-bordered" /> %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container py-5">
+  <div class="container">
+    <h2> Closed Rentings </h2>
+  </div>
+  <div class="row" >
+    <% @past_orders.each do |order| %>
+      <div class="col-4">
+        <div class="card-order mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-order-infos">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> Duration : <%= order.duration  %> days</p>
+            </div>
+            <h2 class="card-order-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.weapon.owner.photo.key, crop: :fill, :class => "card-order-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-user avatar-bordered" /> %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%# <button> %>
+<div class="position-relative pb-5">
+<%= link_to "Back to Weapons", weapons_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
 </div>
