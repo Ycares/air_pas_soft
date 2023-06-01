@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @order.weapon = @weapon
     @order.user = current_user
     if @order.save
-      redirect_to weapon_orders_path(params[:weapon_id])
+      redirect_to orders_path
     else
       render "weapons/show", status: :unprocessable_entity
     end
