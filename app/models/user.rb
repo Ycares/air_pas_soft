@@ -6,5 +6,4 @@ class User < ApplicationRecord
   has_many :weapons, foreign_key: :owner_id
 
   has_one_attached :photo
-
 end

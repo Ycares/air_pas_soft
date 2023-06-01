@@ -1,5 +1,4 @@
 class Owner::WeaponsController < ApplicationController
-
   def index
     @user = current_user
     @weapons = current_user.weapons
@@ -11,5 +10,4 @@ class Owner::WeaponsController < ApplicationController
 
   def create
   end
-
 end
