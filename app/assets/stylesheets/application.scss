@@ -33,6 +33,14 @@ a {
   text-decoration: none;
 }
 
+.nav-link {
+  color: white;
+}
+
 hr {
   border: 0.5px solid #666666;
+}
+
+.nav-link:hover {
+  color: #BDAE6D;
 }
