@@ -11,12 +11,16 @@
 
 // }
 
+.card-rent>img {
+  height: 200px;
+  object-fit: cover;
+}
 
 .cards-orders{
   display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 84px;
+    gap: 50px;
 }
 
 .card-order {

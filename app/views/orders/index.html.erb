@@ -40,8 +40,8 @@
             <div class="p-3 border bg-light">
               <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
               <hr>
-              <p><strong>Start of the attack : </strong> <%= order.start_date %> </p>
-              <p><strong>End of the attack : </strong> <%= order.end_date %> </p>
+              <p><strong>Start of the attack : </strong> <%= order.start_date.strftime('%m/%d/%Y') %> </p>
+              <p><strong>End of the attack : </strong> <%= order.end_date.strftime('%m/%d/%Y') %> </p>
               <hr>
               <p><strong>Duration : </strong>For <%= order.duration %> days </p>
               <hr>
@@ -64,14 +64,14 @@
 <div class="container py-5">
 
   <div class="container">
-    <h2 class="h2-poppins"> Being Rent </h2>
+    <h2 class="h2-poppins"> Currently Rented </h2>
     <hr>
   </div>
 
   <div class="cards-orders" >
     <% @current_orders.each do |order| %>
 
-        <div class="card" style="width: 18rem;">
+        <div class="card card-rent" style="width: 18rem;">
           <% if order.weapon.photo.attached? %>
             <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
           <% else %>
@@ -81,6 +81,8 @@
           <div class="card-body">
             <h3 class="card-title-h3"> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h3>
             <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
+            <p><strong>Start of the attack : </strong> <%= order.start_date.strftime('%m/%d/%Y') %> </p>
+            <p><strong>End of the attack : </strong> <%= order.end_date.strftime('%m/%d/%Y') %> </p>
             <p><strong>Total price : </strong><%= order.total_price.to_i %> € </p>
           </div>
         </div>
@@ -100,7 +102,7 @@
     <% @past_orders.each do |order| %>
 
 
-        <div class="card" style="width: 18rem;">
+        <div class="card card-rent" style="width: 18rem;">
           <% if order.weapon.photo.attached? %>
             <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
           <% else %>
@@ -110,6 +112,8 @@
           <div class="card-body">
             <h3 class="card-title-h3"> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h3>
             <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
+            <p><strong>Start of the attack : </strong> <%= order.start_date.strftime('%m/%d/%Y') %> </p>
+            <p><strong>End of the attack : </strong> <%= order.end_date.strftime('%m/%d/%Y') %> </p>
             <p><strong>Total price : </strong><%= order.total_price.to_i %> € </p>
           </div>
         </div>
@@ -117,11 +121,11 @@
   </div>
 </div>
 
-
+<br>
 
 <%# <button> %>
 <div class="position-relative pb-5">
-<%= link_to "Back to Weapons", weapons_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
+<%= link_to "Back to Weapons", weapons_path, class: "btn position-absolute top-50 start-50 translate-middle" %>
 </div>
 
 
