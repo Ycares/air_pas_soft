@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.weapon = @weapon
     @order.user = current_user
-    duration = (@order.end_date - @order.start_date).fdiv((24 * 3600))
-    @order.duration = duration.to_i
+    time = (@order.end_date - @order.start_date).fdiv((24 * 3600))
+    @order[:duration] = time.to_i
     @order.total_price = @weapon.price * @order.duration
     if @order.save
       redirect_to orders_path
