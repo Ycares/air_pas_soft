@@ -7,7 +7,7 @@
 			<%= @weapon.era_of_use %>
 		</p>
 	</div>
-	<div class="row" >
+	<div class="row">
 		<div class="col me-5">
 			<div class="border-rounded pb-5">
 				<%= cl_image_tag @weapon.photo.key, width:800, height:400, crop: :fill %>
@@ -26,10 +26,13 @@
 			</div>
 			<hr>
 			<div class="flex-container py-2">
-				<h2 class="h2-poppins">
-					From
-					<%= @weapon.owner.username %>
-				</h2>
+        <div>
+          <h2 class="h2-poppins">
+            From
+            <%= @weapon.owner.username %>
+          </h2>
+          <p><%= @weapon.owner.biographie %></p>
+        </div>
 				<div class="col-1">
 					<p class="img-owner-weapon">
 						<%= cl_image_tag @weapon.owner.photo.key, width: 50, height:50 %>
@@ -59,5 +62,7 @@
 			<%= f.input :total_price %>
 			<%= f.submit "Order it ! ", class:"btn btn-primary"  %>
 			<% end %>
+      </div>
 		</div>
 	</div>
+

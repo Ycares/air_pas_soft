@@ -1,16 +1,24 @@
-.card-order {
-  position: relative;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  transition: 0.2s ease-out;
 
-  &:hover {
-    transform: scale(1.04);
-    transition: 0.1s ease-out;
-  }
+// .card-order {
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   transition: 0.2s ease-out;
 
+//   &:hover {
+//     transform: scale(1.04);
+//     transition: 0.1s ease-out;
+//   }
+
+// }
+
+.cards-orders{
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 84px;
 }
+
 
 .card-status {
   position: absolute;
@@ -29,37 +37,132 @@
 }
 
 
-.card-order>img {
-  height: 300px;
-  width: 100%;
+.card-order {
+  border-radius: 10px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.border-rounded>img {
+
   object-fit: cover;
+  border-radius: 10px;
+  height: 325px;
 }
 
-.card-order h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.card-header>a {
+  color: #998e5d;
+  font-size: 26px;
+  padding-left: 10px;
+  font-weight: 600;
 }
 
-.card-order p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
+.border-rounded {
+  border-radius: 10px;
+}
+
+.container-padding-bottom {
+  padding-bottom: 15px;
+}
+
+.card-title-h3>a {
+  font-family: 'Poppins';
+  color: #998e5d;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.card-header>a:hover {
+  color: #766e49;
+}
+
+.card-title-h3>a:hover {
+  font-family: 'Poppins';
+  color: #766e49;
 }
 
 
-.card-order .card-order-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-  height: 100px;
-}
+// .card-order h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
 
-.card-order-infos .card-order-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
+// .card-order p {
+//   font-size: 12px;
+//   opacity: .7;
+//   margin: 0;
+// }
+
+
+// .card-order .card-order-infos {
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+//   height: 100px;
+// }
+
+// .card-order-infos .card-order-user {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
+
+
+
+
+
+
+
+// CODE VINCENT
+
+// .card-order {
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   transition: 0.2s ease-out;
+
+//   &:hover {
+//     transform: scale(1.04);
+//     transition: 0.1s ease-out;
+//   }
+
+// }
+
+// .card-order>img {
+//   height: 300px;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+// .card-order h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
+
+// .card-order p {
+//   font-size: 12px;
+//   opacity: .7;
+//   margin: 0;
+// }
+
+
+// .card-order .card-order-infos {
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+//   height: 100px;
+// }
+
+// .card-order-infos .card-order-user {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
