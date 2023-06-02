@@ -1,0 +1,88 @@
+
+<div class="container py-4">
+  <h1 class="pb-4"> <%= @user.username%>, review all your requested orders  </h1>
+
+  <div class="container mb-3">
+    <h2> You have <%= @new_requests.length %> Pending Requests </h2>
+  </div>
+
+  <div class="row" >
+    <% @new_requests.each do |order| %>
+      <div class="col-4">
+        <div class="card-order-owner mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-status">
+              <span> Pending </span>
+          </div>
+          <div class="card-order-owner-infos justify-content-between align-items-center">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> <%= order.user.username %>  </p>
+            </div>
+            <h2 class="card-order-owner-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.user.photo.key, crop: :fill, :class => "card-order-owner-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-owner-user avatar-bordered" /> %>
+          </div>
+        </div>
+          <div class=" d-flex justify-content: space-evenly " style="gap:15px ">
+            <%= button_to accept_owner_order_path(order), method: "patch", class: "btn" do %>
+                <div class = "d-inline-flex" >
+                  <i class="fa-solid fa-check"></i>
+                  <p class = "text-white"> <strong>Accept </strong> </p>
+                </div>
+              <% end %>
+            <%= button_to decline_owner_order_path(order), method: "patch", class: "btn"  do %>
+               <div class = "d-inline-flex" >
+                  <i class="fa-solid fa-xmark"></i>
+                  <p class = "text-white" > <strong> Decline </strong></p>
+                </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container mt-5">
+    <hr>
+  </div>
+
+  <div class="container mt-5 ">
+    <h2 mt-5>Your Former Requests - <%= @old_requests.length %> orders </h2>
+  </div>
+
+  <div class="row" >
+    <% @old_requests.each do |order| %>
+      <div class="col-4">
+        <div class="card-order-owner mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-status">
+            <span>
+              <% if order.status == true %>
+                <%= "Accepted !" %>
+              <% else %>
+                <%= " X Declined "  %>
+              <% end %>
+            </span>
+          </div>
+          <div class="card-order-owner-infos justify-content-between align-items-center">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> <%= order.user.username %> </p>
+            </div>
+            <h2 class="card-order-owner-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.user.photo.key, crop: :fill, :class => "card-order-owner-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-owner-user avatar-bordered" /> %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

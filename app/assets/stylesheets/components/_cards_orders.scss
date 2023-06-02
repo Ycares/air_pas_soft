@@ -1,3 +1,4 @@
+
 // .card-order {
 //   overflow: hidden;
 //   background: white;
@@ -11,6 +12,7 @@
 
 // }
 
+
 .card-rent>img {
   height: 200px;
   object-fit: cover;
@@ -23,6 +25,24 @@
     gap: 50px;
 }
 
+
+.card-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  // width: 100%;
+
+  span {
+    background: #BDAE6D;
+    font-size: 1em;
+    padding: 4px 4px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+
 .card-order {
   border-radius: 10px;
   width: 1000px;
@@ -30,6 +50,7 @@
 }
 
 .border-rounded>img {
+
   object-fit: cover;
   border-radius: 10px;
   height: 325px;
