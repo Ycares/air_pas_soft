@@ -6,11 +6,137 @@
   >> others ??
 -->
 
+<div class="container pt-4 pb-5">
+
+  <h1 class="pb-4 centered"> <%= @user.username%>, review all your orders  </h1>
+  <br>
+  <div class="container pb-3">
+    <h2 class="h2-poppins">Order to come</h2>
+    <hr>
+  </div>
+
+  <% @futur_orders.each do |order| %>
+
+  <div class="card card-order">
+  <p class="card-header"> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </p>
+    <div class="card-body">
+
+      <div class="container container-padding-bottom">
+        <div class="row g-2">
+
+          <%# COLUMN 1 : PHOTO %>
+          <div class="col-7">
+            <div class="border bg-light border-rounded">
+              <% if order.weapon.photo.attached? %>
+                <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+              <% else %>
+                <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+              <% end %>
+            </div>
+          </div>
+
+          <%# COLUMN 2 : INFO %>
+          <div class="col-5">
+            <div class="p-3 border bg-light">
+              <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
+              <hr>
+              <p><strong>Start of the attack : </strong> <%= order.start_date %> </p>
+              <p><strong>End of the attack : </strong> <%= order.end_date %> </p>
+              <hr>
+              <p><strong>Duration : </strong>For <%= order.duration %> days </p>
+              <hr>
+              <p><strong>Total price : </strong> <%= order.total_price.to_i %> €</p>
+              <a href="#" class="btn">Contact seller</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+
 <div class="container py-5">
+
+  <div class="container">
+    <h2 class="h2-poppins"> Being Rent </h2>
+    <hr>
+  </div>
+
+  <div class="cards-orders" >
+    <% @current_orders.each do |order| %>
+
+        <div class="card" style="width: 18rem;">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+
+          <div class="card-body">
+            <h3 class="card-title-h3"> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h3>
+            <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
+            <p><strong>Total price : </strong><%= order.total_price.to_i %> € </p>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container py-5">
+  <div class="container">
+    <h2 class="h2-poppins"> Closed Rentings </h2>
+    <hr>
+  </div>
+
+  <div class="cards-orders" >
+    <% @past_orders.each do |order| %>
+
+
+        <div class="card" style="width: 18rem;">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+
+          <div class="card-body">
+            <h3 class="card-title-h3"> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h3>
+            <p><strong>Seller :</strong> <%= order.weapon.owner.username %> </p>
+            <p><strong>Total price : </strong><%= order.total_price.to_i %> € </p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%# <button> %>
+<div class="position-relative pb-5">
+<%= link_to "Back to Weapons", weapons_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
+</div>
+
+
+
+
+
+
+<%# CODE VINCENT %>
+
+<!---
+<div class="container pt-4 pb-5">
 
   <h1 class="pb-4"> <%= @user.username%>, review all your orders  </h1>
   <div class="container">
-    <h2>Order to come </h2>
+    <h2 class="h2-poppins">Order to come </h2>
   </div>
 
   <div class="row" >
@@ -40,7 +166,7 @@
 
 <div class="container py-5">
   <div class="container">
-    <h2> Being Rent </h2>
+    <h2 class="h2-poppins"> Being Rent </h2>
   </div>
   <div class="row" >
     <% @current_orders.each do |order| %>
@@ -69,7 +195,7 @@
 
 <div class="container py-5">
   <div class="container">
-    <h2> Closed Rentings </h2>
+    <h2 class="h2-poppins"> Closed Rentings </h2>
   </div>
   <div class="row" >
     <% @past_orders.each do |order| %>
@@ -101,3 +227,4 @@
 <div class="position-relative pb-5">
 <%= link_to "Back to Weapons", weapons_path, class: "btn btn-primary position-absolute top-50 start-50 translate-middle" %>
 </div>
+--->

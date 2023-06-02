@@ -12,23 +12,16 @@
 
 .container {
   margin-top: 15px;
-  // box-shadow: 3px 3px 3px black;
 }
 
 .card-booking {
-  box-shadow: 3px 3px 3px rgb(200, 196, 196);
+  box-shadow: 2px 2px 8px #d0d0d082;
   border-radius: 5px;
   height: fit-content;
 }
 
 .img-owner-weapon img{
   border-radius: 50%;
-}
-
-.h2-poppins {
-  font-family: 'Poppins', sans-serif, "Work Sans", "Helvetica", "sans-serif";
-  font-size: 26px;
-  font-weight: 600;
 }
 
 .flex-container {
