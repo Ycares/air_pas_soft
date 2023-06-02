@@ -1,0 +1,65 @@
+.card-order-owner {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease-out;
+
+  &:hover {
+    transform: scale(1.04);
+    transition: 0.1s ease-out;
+  }
+
+}
+
+.card-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  // width: 100%;
+
+  span {
+    background: #BDAE6D;
+    font-size: 1em;
+    padding: 4px 4px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+
+.card-order-owner>img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-order-owner h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-order-owner p {
+  font-size: 12px;
+  opacity: .8;
+  margin: 0;
+}
+
+
+.card-order-owner .card-order-owner-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  height: 100px;
+}
+
+.card-order-owner-infos .card-order-owner-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
