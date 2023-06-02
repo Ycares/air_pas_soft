@@ -26,10 +26,13 @@
 			</div>
 			<hr>
 			<div class="flex-container py-2">
-				<h2 class="h2-poppins">
-					From
-					<%= @weapon.owner.username %>
-				</h2>
+        <div>
+          <h2 class="h2-poppins">
+            From
+            <%= @weapon.owner.username %>
+          </h2>
+          <p><%= @weapon.owner.biographie %></p>
+        </div>
 				<div class="col-1">
 					<p class="img-owner-weapon">
 						<%= cl_image_tag @weapon.owner.photo.key, width: 50, height:50 %>
