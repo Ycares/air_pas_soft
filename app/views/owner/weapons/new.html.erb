@@ -2,7 +2,7 @@
 <div class="container ">
   <div class="col form-new-weapon">
     <H1> New Weapon </H1>
-    <%= simple_form_for(@weapon) do |f| %>
+    <%= simple_form_for([:owner,@weapon]) do |f| %>
     <div class="d-flex" style="gap:15px">
       <%= f.input :name, wrapper_html: { class: "flex-grow-1"} %>
       <%= f.input :price, wrapper_html: {class: "flex-grow-1"} %>
@@ -13,12 +13,13 @@
     </div>
     <div>
       <%= f.input :characteristics, collection: ['Attack', 'Defense', 'Line Weapon', 'Polearm', 'Other'] , as: :select, input_html: { multiple: true },wrapper_html: { class: "flex-grow-1"} %>
-      <%= f.input :era_of_use%>
+      <%= f.input :era_of_use , placeholder: 'Various periods, Feudal Japan '%>
     </div>
     <div class="d-flex" style="gap:15px">
       <%= f.input :details,:as => :text, wrapper_html: { class: "flex-grow-1"} %>
     </div>
       <%= f.input :origin_country%>
+      <%= f.input :photo, as: :file %>
       <%= f.submit "Add", class:"btn" %>
     <% end %>
   </div>
