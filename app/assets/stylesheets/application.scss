@@ -14,25 +14,35 @@
 body{
   min-height: 100vh;
   margin: 0;
-
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
 header{
   min-height:50px;
-  background:lightcyan;
 }
 
 footer{
   min-height:50px;
-  background:PapayaWhip;
+}
+
+.h2-poppins {
+  font-family: 'Poppins', sans-serif, "Work Sans", "Helvetica", "sans-serif";
+  font-size: 26px;
+  font-weight: 600;
 }
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 hr {
   border: 0.5px solid #666666;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
