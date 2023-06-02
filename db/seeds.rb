@@ -258,8 +258,8 @@ weapon_tessen.photo.attach(io: file, filename: "Tessen.jpg", content_type: "imag
 
 weapon_shield = Weapon.create!(
   {
-    name: "Viking Shield",
-    details: "A large shield used by medieval Vikings knights.",
+    name: "Gaule Shield",
+    details: "A large shield used by gaule knights.",
     origin_country: "France",
     era_of_use: "Medieval period",
     characteristics: "Heavy, used for blocking and protecting into team battlefield",
@@ -270,8 +270,8 @@ weapon_shield = Weapon.create!(
     owner: vince
   }
 )
-file = File.open(Rails.root.join("db/seeds/weapons_img/viking_bouclier.jpg"))
-weapon_shield.photo.attach(io: file, filename: "viking_bouclier.jpg", content_type: "image/jpeg")
+file = File.open(Rails.root.join("db/seeds/weapons_img/Buckler.jpg"))
+weapon_shield.photo.attach(io: file, filename: "Buckler.jpg", content_type: "image/jpeg")
 
 weapon_armor = Weapon.create!(
   {
@@ -331,10 +331,21 @@ order.save
 order = Order.create!(
   user:      ycare,
   weapon:  weapon_katana,
-  start_date:   "2023-08-02",
-  end_date:     "2023-09-10",
+  start_date:   "2023-01-02",
+  end_date:     "2023-02-10",
   total_price: 5500,
   status: false
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  user:      ycare,
+  weapon:  weapon_katana,
+  start_date:   "2023-02-02",
+  end_date:     "2023-02-10",
+  total_price: 1500,
+  status: true
 )
 order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
 order.save
@@ -364,6 +375,46 @@ order = Order.create!(
 )
 order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
 order.save
+
+order = Order.create!(
+  # should be past_order
+  user:      vince,
+  weapon:  weapon_katar,
+  start_date:   "2023-08-02",
+  end_date:     "2023-09-15",
+  total_price: 350,
+  status: nil,
+  comment: "a very nice traditionnal tools, helped me to feel safe during my holidays"
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  # should be past_order
+  user:      ycare,
+  weapon:  weapon_nunchaku,
+  start_date:   "2023-06-02",
+  end_date:     "2023-05-15",
+  total_price: 1350,
+  status: nil,
+  comment: "il a l'air trop cool ton nunchaku ! j'aimerai le tester pour ma prochaine chasse à l'homme "
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
+order = Order.create!(
+  # should be past_order
+  user:      vince,
+  weapon:  weapon_nunchaku,
+  start_date:   "2023-06-02",
+  end_date:     "2023-05-15",
+  total_price: 1350,
+  status: nil,
+  comment: " envie de tester ce super produit "
+)
+order.duration = (order.end_date - order.start_date).fdiv((24 * 3600))
+order.save
+
 
 order = Order.create!(
   # should be past_order

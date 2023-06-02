@@ -1,7 +1,11 @@
 class WeaponsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
-    @weapons = Weapon.all
+    if user_signed_in?
+      @weapons = Weapon.where.not(owner: current_user)
+    else
+      @weapons = Weapon.all
+    end
   end
 
   def show
