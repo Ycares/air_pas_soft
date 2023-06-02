@@ -12,7 +12,6 @@ class WeaponsController < ApplicationController
       @weapons = Weapon.where.not(owner: current_user)
     else
       @weapons = Weapon.all
-
     end
   end
 
