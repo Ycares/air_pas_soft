@@ -32,8 +32,8 @@ puts "Creating users..."
 ycare = User.create!(
   username: "Ycare",
   email: "ycare@apple.com",
-  latitude: "47.218732",
-  longitude: "-1.489932",
+  # latitude: "47.218732",
+  # longitude: "-1.489932",
   password: "azerty",
   age: 23,
   experience: "Newbie"
@@ -44,8 +44,8 @@ ycare.photo.attach(io: file, filename: "ycare_light.jpg", content_type: "image/j
 clara = User.create!(
   username: "Clara44",
   email: "clara@survival.com",
-  latitude: "47.223895",
-  longitude: "-1.581758",
+  # latitude: "47.223895",
+  # longitude: "-1.581758",
   password: "123456",
   age: 18,
   experience: "Confirmed"
@@ -56,8 +56,8 @@ clara.photo.attach(io: file, filename: "Clara_light.jpg", content_type: "image/j
 vince = User.create!(
   username: "Vincenzo",
   email: "vincenzo@wanadoo.fr",
-  latitude: "47.230995",
-  longitude: "-1.597152",
+  # latitude: "47.230995",
+  # longitude: "-1.597152",
   password: "123456",
   age: 58,
   experience: "Intermediate"
