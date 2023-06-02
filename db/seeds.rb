@@ -36,7 +36,8 @@ ycare = User.create!(
   # longitude: "-1.489932",
   password: "azerty",
   age: 23,
-  experience: "Newbie"
+  experience: "Newbie",
+  biographie: "Dans ce monde apocalyptique sans pitié, j'ai acquis une réputation solide en tant que survivaliste et marchand d'armes. Ayant grandi dans les ruines de la civilisation, j'ai appris à maîtriser les compétences nécessaires pour survivre et me défendre. J'ai utilisé cette expertise pour établir un marché d'armes florissant, fournissant aux groupes de survivants les moyens de se protéger et de lutter contre les dangers qui les entourent."
 )
 file = File.open(Rails.root.join("db/seeds/users_img/ycare_light.jpg"))
 ycare.photo.attach(io: file, filename: "ycare_light.jpg", content_type: "image/jpeg")
@@ -48,7 +49,8 @@ clara = User.create!(
   # longitude: "-1.581758",
   password: "123456",
   age: 18,
-  experience: "Confirmed"
+  experience: "Confirmed",
+  biographie: "Surnommé 'Le Fantôme'. Depuis que le monde a sombré dans l'apocalypse, j'ai embrassé ma nature solitaire et suis devenu un survivaliste expert dans le commerce des armes. À travers mon réseau clandestin, je fournis des armes de qualité à ceux qui en ont besoin pour se protéger et survivre. Ma réputation d'efficacité, de discrétion et de fiabilité en a fait l'un des marchands d'armes les plus recherchés et respectés dans cette ère sombre."
 )
 file = File.open(Rails.root.join("db/seeds/users_img/Clara_light.jpg"))
 clara.photo.attach(io: file, filename: "Clara_light.jpg", content_type: "image/jpeg")
@@ -60,7 +62,8 @@ vince = User.create!(
   # longitude: "-1.597152",
   password: "123456",
   age: 58,
-  experience: "Intermediate"
+  experience: "Intermediate",
+  biographie: "Ayant survécu à l'effondrement de la société, j'ai décidé de mettre mes connaissances en armes et en tactiques de survie au service des autres. En tant que survivaliste expérimenté, j'ai construit un marché d'armes florissant dans ce monde chaotique. Ma passion pour l'apprentissage et mon engagement envers la sécurité des survivants m'ont valu le respect et la confiance de nombreux groupes à travers la région."
 )
 file = File.open(Rails.root.join("db/seeds/users_img/vince_light.jpg"))
 vince.photo.attach(io: file, filename: "vince_light.jpg", content_type: "image/jpeg")
