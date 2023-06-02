@@ -1,0 +1,62 @@
+
+<div class="container py-4">
+  <h1 class="pb-4"> <%= @user.username%>, review all your requested orders  </h1>
+
+  <div class="container">
+    <h2> Pending Requests </h2>
+  </div>
+
+  <div class="row" >
+    <% @new_requests.each do |order| %>
+      <div class="col-4">
+        <div class="card-order mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-order-infos">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> Status : en attente de validation </p>
+            </div>
+            <h2 class="card-order-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.user.photo.key, crop: :fill, :class => "card-order-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-user avatar-bordered" /> %>
+          </div>
+        </div>
+          <div class="d-flex" style="gap:15px ">
+            <%= button_to "Accept", accept_owner_order_path(order), method: "patch", class: "btn"%>
+            <%= button_to "Decline", decline_owner_order_path(order), method: "patch", class: "btn"%>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <h2> Old Requests </h2>
+  </div>
+
+  <div class="row" >
+    <% @old_requests.each do |order| %>
+      <div class="col-4">
+        <div class="card-order mb-4">
+          <% if order.weapon.photo.attached? %>
+            <%= cl_image_tag order.weapon.photo.key, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag("racphw8y1wvw9fv9s4lc.jpeg", width: 200, height: 200, crop: :fill) %>
+          <% end %>
+          <div class="card-order-infos">
+            <div>
+              <h2> <%= link_to order.weapon.name, weapon_path(order.weapon) %> </h2>
+              <p> Status : en attente de validation </p>
+            </div>
+            <h2 class="card-order-pricing"><%= order.total_price.to_i %>&nbsp;€ </h2>
+            <%= cl_image_tag order.user.photo.key, crop: :fill, :class => "card-order-user avatar-large" %>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-order-user avatar-bordered" /> %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
